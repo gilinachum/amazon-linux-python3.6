@@ -2,12 +2,17 @@ FROM amazonlinux:latest
 
 ENV PYSHORT 3.6
 ENV PYTHONVER 3.6.3
-ENV MD5CHECKSUM 2d0fc9f3a5940707590e07f03ecb08b9
-
-WORKDIR /tmp
 
 RUN yum -y groupinstall "Development tools"
+RUN yum -y install zlib-devel
+RUN yum -y install bzip2-devel openssl-devel ncurses-devel
+RUN yum -y install sqlite sqlite-devel xz-devel
+RUN yum -y install readline-devel tk-devel gdbm-devel db4-devel
+RUN yum -y install libpcap-devel xz-devel
+RUN yum -y install libjpeg-devel
 RUN yum -y install wget
+
+WORKDIR /tmp
 
 RUN wget --no-check-certificate https://www.python.org/ftp/python/${PYTHONVER}/Python-${PYTHONVER}.tgz
 RUN tar -zxvf Python-${PYTHONVER}.tgz
