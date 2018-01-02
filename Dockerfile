@@ -6,6 +6,8 @@ ENV MD5CHECKSUM 2d0fc9f3a5940707590e07f03ecb08b9
 
 WORKDIR /tmp
 
+RUN yum -y install wget
+
 RUN wget --no-check-certificate https://www.python.org/ftp/python/${PYTHONVER}/Python-${PYTHONVER}.tgz
 RUN tar -zxvf Python-${PYTHONVER}.tgz
 
